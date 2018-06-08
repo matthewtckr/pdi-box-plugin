@@ -4,7 +4,7 @@
 
   <groupId>org.pentaho.pdi</groupId>
   <artifactId>pdi-box-plugin</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>PDI Box Plugin</name>
 
   <properties>
@@ -17,7 +17,7 @@
     <connection>scm:git:git://github.com/matthewtckr/pdi-box-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:matthewtckr/pdi-box-plugin.git</developerConnection>
     <url>http://github.com/matthewtckr/pdi-box-plugin/tree/master</url>
-    <tag>pdi-box-plugin-1.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <developers>
