@@ -19,6 +19,7 @@ import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.StepDataInterface;
 import org.pentaho.di.trans.step.StepInterface;
 import org.pentaho.di.trans.step.StepMeta;
+import org.pentaho.di.trans.steps.box.BoxUsersInputMeta.UserField.Attribute;
 import org.pentaho.metastore.api.IMetaStore;
 import org.w3c.dom.Node;
 
@@ -112,14 +113,24 @@ public class BoxUsersInputMeta extends BoxMeta {
   public void readRep( Repository rep, IMetaStore metaStore, ObjectId id_step, List<DatabaseMeta> databases )
     throws KettleException {
     super.readRep( rep, metaStore, id_step, databases );
-    
+    int fieldCount = rep.countNrStepAttributes( id_step, "fieldName" );
+    allocate( fieldCount );
+    for ( int i = 0; i < fieldCount; i++ ) {
+      String name = rep.getStepAttributeString( id_step, i, "fieldName" );
+      Attribute type = Attribute.valueOf( rep.getStepAttributeString( id_step, i, "fieldType" ) );
+      userFields[i] = new UserField( name, type );
+    }
   }
 
   @Override
   public void saveRep( Repository rep, IMetaStore metaStore, ObjectId id_transformation, ObjectId id_step )
     throws KettleException {
     super.saveRep( rep, metaStore, id_transformation, id_step );
-    
+    for ( int i = 0; i < userFields.length; i++ ) {
+      UserField field = userFields[i];
+      rep.saveStepAttribute( id_transformation, id_step, i, "fieldName", field.getName() );
+      rep.saveStepAttribute( id_transformation, id_step, i, "fieldType", field.getType().name() );
+    }
   }
 
   public static class UserField {
