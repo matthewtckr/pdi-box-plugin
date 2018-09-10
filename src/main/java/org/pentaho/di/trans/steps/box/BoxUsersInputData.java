@@ -17,6 +17,12 @@ public class BoxUsersInputData extends BoxData {
     	return user.getLogin();
       case STATUS:
     	return user.getStatus().toString();
+      case CREATED_AT:
+        return user.getCreatedAt();
+      case SPACE_ALLOWED:
+        return user.getSpaceAmount();
+      case SPACE_USED:
+        return user.getSpaceUsed();
       default:
         throw new RuntimeException( "Unknown Box User Attribute" );
     }

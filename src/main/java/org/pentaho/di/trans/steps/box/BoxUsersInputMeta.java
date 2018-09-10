@@ -176,6 +176,24 @@ public class BoxUsersInputMeta extends BoxMeta {
         public String toString() {
           return "Status";
         }
+      },
+      CREATED_AT( ValueMetaInterface.TYPE_DATE ) {
+        @Override
+        public String toString() {
+          return "Created At";
+        }
+      },
+      SPACE_ALLOWED( ValueMetaInterface.TYPE_INTEGER ) {
+        @Override
+        public String toString() {
+          return "Storage Quota";
+        }
+      },
+      SPACE_USED( ValueMetaInterface.TYPE_INTEGER ) {
+        @Override
+        public String toString() {
+          return "Storage Used";
+        }
       };
 
       private final int dataType;
