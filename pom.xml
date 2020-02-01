@@ -8,7 +8,7 @@
   <name>PDI Box Plugin</name>
 
   <properties>
-    <kettle.version>6.0.0.0-353</kettle.version>
+    <kettle.version>7.1.0.32-246</kettle.version>
     <box.version>2.20.0</box.version>
     <dependency.mockito.version>1.10.19</dependency.mockito.version>
   </properties>
